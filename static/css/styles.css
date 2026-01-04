@@ -1,0 +1,434 @@
+/* ===============================
+   ROOT VARIABLES
+================================ */
+:root {
+  --bg: #f4f7fb;
+  --card: rgba(255, 255, 255, 0.75);
+  --muted: #6b7280;
+  --text: #0f172a;
+  --accent: #6366f1;
+  --accent-2: #22c55e;
+  --danger: #ef4444;
+
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 8px;
+
+  --shadow-sm: 0 6px 18px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.15);
+
+  --font: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ===============================
+   RESET
+================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: linear-gradient(180deg, var(--bg), #eaf0ff);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem;
+}
+
+/* ===============================
+   LAYOUT
+================================ */
+.container {
+  max-width: 960px;
+  margin: auto;
+}
+
+/* ===============================
+   HEADER
+================================ */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 1rem;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+/* ===============================
+   PANEL
+================================ */
+.panel {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(12px);
+}
+
+/* ===============================
+   TABS
+================================ */
+.tabs {
+  margin-top: 1rem;
+}
+
+.tabs input {
+  display: none;
+}
+
+.tabs label {
+  padding: 0.45rem 1rem;
+  margin-right: 0.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.tabs input:checked + label {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+
+/* ===============================
+   TASK LIST
+================================ */
+.task-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-sm);
+}
+
+.completed-card {
+  opacity: 0.7;
+  text-decoration: line-through;
+  border-left: 4px solid var(--accent-2);
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.btn {
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn.small {
+  font-size: 0.85rem;
+}
+
+.btn.ghost {
+  background: transparent;
+  box-shadow: none;
+  color: var(--muted);
+}
+
+.btn.danger {
+  background: linear-gradient(90deg, #fecaca, #fda4af);
+}
+
+/* ===============================
+   FORMS
+================================ */
+.task-form input,
+.task-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid #d1d5db;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 2rem;
+}
+
+/* ===============================
+   DARK MODE
+================================ */
+body.dark {
+  --bg: #020617;
+  --card: rgba(30, 41, 59, 0.85);
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  background: linear-gradient(180deg, #020617, #020617);
+}
+
+body.dark .panel,
+body.dark .task-card {
+  background: rgba(30, 41, 59, 0.85);
+}
+
+body.dark input,
+body.dark textarea {
+  background: rgba(15, 23, 42, 0.8);
+  color: #e5e7eb;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 720px) {
+  body {
+    padding: 1rem;
+  }
+
+  .task-card {
+    flex-direction: column;
+  }
+}
+
+/* ===============================
+   NAVBAR LINKS (HOME & ADD TASK)
+================================ */
+
+.site-header nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* BASE STYLE */
+.nav-link {
+  font-size: 1.05rem;
+  font-weight: 700; /* ✅ BOLD */
+  color: #374151;
+  text-decoration: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  transition: 
+    transform 0.25s ease,
+    color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* HOVER EFFECT */
+.nav-link:hover {
+  color: #111827;
+  background-color: rgba(99, 102, 241, 0.15);
+  transform: scale(1.15); /* ✅ SIZE INCREASE */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* OPTIONAL: ACTIVE PAGE EFFECT */
+.nav-link:active {
+  transform: scale(1.08);
+}
+
+/* ===============================
+   NAVBAR – ENHANCED
+================================ */
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.site-header .logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+/* LINKS BASE */
+.nav-link {
+  position: relative;
+  font-size: 1.05rem;
+  font-weight: 700; /* ✅ bold */
+  color: #374151;
+  text-decoration: none;
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* UNDERLINE (hidden by default) */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #22c55e);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+/* HOVER EFFECT */
+.nav-link:hover {
+  color: #111827;
+  background: rgba(99, 102, 241, 0.15);
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* UNDERLINE ON HOVER */
+.nav-link:hover::after {
+  width: 70%;
+}
+
+/* ADD TASK SPECIAL */
+.add-task {
+  color: #4f46e5;
+}
+
+.add-task:hover {
+  background: linear-gradient(90deg, #6366f1, #22c55e);
+  color: #fff;
+  transform: scale(1.2);
+  box-shadow: 0 10px 25px rgba(99,102,241,0.35);
+}
+
+/* ACTIVE PAGE */
+.nav-link.active {
+  background: linear-gradient(90deg, #6366f1, #22c55e);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(99,102,241,0.35);
+}
+
+.nav-link.active::after {
+  width: 70%;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 720px) {
+  .nav {
+    gap: 1rem;
+  }
+
+  .nav-link:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* ===============================
+   TASK CARD ENHANCEMENTS
+================================ */
+
+/* Hover effect */
+.task-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* COMPLETED TASK */
+.completed-card {
+  opacity: 0.6;
+  background: rgba(240, 253, 244, 0.8);
+  border-left: 4px solid #22c55e;
+  text-decoration: line-through;
+}
+
+/* ===============================
+   DUE DATE COLORS
+================================ */
+.due {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.due.future {
+  color: #16a34a; /* green */
+}
+
+.due.today {
+  color: #f59e0b; /* orange */
+}
+
+.due.late {
+  color: #dc2626; /* red */
+}
+
+/* ===============================
+   ACTION BUTTONS
+================================ */
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.task-actions a {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.task-actions .edit {
+  color: #2563eb;
+}
+
+.task-actions .delete {
+  color: #dc2626;
+}
